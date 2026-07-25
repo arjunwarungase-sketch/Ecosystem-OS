@@ -1,0 +1,409 @@
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+
+    background:linear-gradient(
+        135deg,
+        #1b4332,
+        #2d6a4f,
+        #40916c
+    );
+
+    min-height:100vh;
+}
+
+header{
+
+    padding:25px;
+
+    color:white;
+
+    text-align:center;
+
+    font-size:22px;
+
+    letter-spacing:1px;
+
+}
+
+header h1 {
+    margin: 0;
+}
+.sensor-grid{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    gap:25px;
+    padding:30px;
+
+}
+
+.card{
+
+    background:rgba(255,255,255,0.15);
+
+    backdrop-filter:blur(15px);
+
+    border-radius:20px;
+
+    padding:25px;
+
+    text-align:center;
+
+    color:white;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+
+    transition:.3s;
+
+    min-height:220px;
+
+}
+
+.card:hover{
+
+    transform:
+    translateY(-10px)
+    scale(1.03);
+
+    box-shadow:
+    0 20px 40px rgba(0,0,0,.35);
+
+}
+
+.card h2{
+    margin-top:0;
+    color:white;
+    font-weight: 600;
+}
+
+.value{
+
+    font-size:52px;
+
+    font-weight:700;
+
+}
+
+.perfect{
+    color:#7CFC00;
+    animation:pulse 1s infinite;
+}
+
+.warning{
+    color:gold;
+    animation:pulse 1.5s infinite;
+}
+
+.critical{
+    color:red;
+    animation:pulse 2s infinite;
+}
+
+header p{
+
+    margin-top:5px;
+
+    opacity:.8;
+
+    font-size:18px;
+
+}
+
+.online{
+
+    color:#7CFC00;
+
+    font-weight:600;
+
+}
+
+.card .icon{
+    margin-top:0;
+    font-size: 32px;
+    font-weight: 600;
+}
+
+@keyframes pulse{
+
+    0%{transform:scale(1);}
+
+    50%{transform:scale(1.15); opacity:.7;}
+
+    100%{transform:scale(1);}
+}
+
+.controls{
+    margin-top:40px;
+    margin-bottom:40px;
+
+    display:flex;
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:20px;
+}
+
+.modeBtn{
+
+    padding:20px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:#2ecc71;
+
+    color:white;
+
+    font-size:20px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+
+}
+
+.modeBtn:hover{
+
+    transform:
+
+    translateY(-5px)
+
+    scale(1.05);
+
+}
+
+.controlGrid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:20px;
+
+    width:100%;
+
+    max-width:700px;
+
+    justify-content:center;
+}
+
+.aiPanel{
+
+    width:100%;
+    max-width:700px;
+    margin:40px auto;
+
+}
+
+
+.aiPanel h2{
+
+    text-align:center;
+    margin-bottom:20px;
+    color:white;
+
+}
+
+.aiCard{
+
+    width:100%;
+    padding:25px;
+
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(15px);
+    -webkit-backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,0.25);
+    border-radius:20px;
+
+    text-align:center;
+
+    box-sizing:border-box;
+
+    color:white;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+
+}
+
+.aiCard p{
+
+    text-align:center;
+    margin:10px 0;
+
+}
+
+#aiStatus{
+
+    font-size:1.6rem;
+    font-weight:700;
+    color:#8cff8c;
+
+}
+
+#aiReason{
+
+    font-size:1rem;
+    color:white;
+
+}
+
+@keyframes aiPulse{
+
+    0%{
+
+        box-shadow:0 0 10px rgba(140,255,156,0.3);
+
+    }
+
+    50%{
+
+        box-shadow:0 0 25px rgba(140,255,156,0.7);
+
+    }
+
+    100%{
+
+        box-shadow:0 0 10px rgba(140,255,156,0.3);
+
+    }
+
+}
+
+.aiCard{
+
+    animation:aiPulse 2s infinite;
+}
+
+.aiLog{
+
+    margin-top:25px;
+
+    text-align:left;
+
+}
+
+.aiLog h3{
+
+    text-align:center;
+
+    color:white;
+
+}
+
+#logContainer{
+
+    max-height:220px;
+
+    overflow-y:auto;
+
+    padding:15px;
+
+    border-radius:15px;
+
+    background:rgba(255,255,255,.08);
+
+}
+
+#logContainer p{
+
+    margin:8px 0;
+
+    color:white;
+
+    font-size:15px;
+
+}
+
+.autoBtn{
+
+    width:100%;
+
+    max-width:700px;
+
+    padding:22px;
+
+    margin-bottom:25px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:#2ecc71;
+
+    color:white;
+
+    font-size:22px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+
+}
+
+.autoBtn:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.autoBtn.manual{
+
+    background:#e67e22;
+
+}
+
+.controls h2{
+
+    text-align:center;
+
+    color:white;
+
+    margin-bottom:20px;
+
+}
+
+.graphSection{
+
+    width:95%;
+    max-width:1000px;
+
+    margin:30px auto;
+
+    padding:20px;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(15px);
+
+}
+
+.graphSection h2{
+
+    color:white;
+
+    text-align:center;
+
+    margin-bottom:20px;
+
+}
+
+#humidityChart{
+
+    width:100%;
+
+    height:350px;
+
+}
