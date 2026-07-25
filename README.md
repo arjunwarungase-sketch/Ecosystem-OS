@@ -1,2 +1,1 @@
-# moss_OS
-The software for our project of an automated moss and algae ecosystem topped off by aquatic life.
+Adding the vertical columns indicating sensor on in the graph.
