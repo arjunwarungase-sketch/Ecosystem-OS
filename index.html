@@ -1,181 +1,640 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
+    <!-- ========================================
+                    BASIC
+    ========================================= -->
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moss Farm Dashboard</title>
 
-    <!-- Favicon -->
-    <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-    <!-- Optional: Better support for Apple devices -->
-    <link rel="apple-touch-icon" href="./favicon.svg">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <meta http-equiv="X-UA-Compatible"
+          content="IE=edge">
+
+    <title>Moss OS | Intelligent Ecosystem Dashboard</title>
+
+    <meta name="description"
+          content="Moss OS is an intelligent ecosystem monitoring dashboard for automated moss ecosystems using Arduino, sensors and web technologies.">
+
+    <meta name="keywords"
+          content="Moss OS, Arduino, Ecosystem, Dashboard, Sensors, Automation, JavaScript">
+
+    <meta name="author"
+          content="Arjun Warungase">
+
+    <meta name="theme-color"
+          content="#050816">
+
+    <!-- ========================================
+                  OPEN GRAPH
+    ========================================= -->
+
+    <meta property="og:title"
+          content="Moss OS">
+
+    <meta property="og:description"
+          content="Intelligent Ecosystem Monitoring Platform">
+
+    <meta property="og:type"
+          content="website">
+
+    <meta property="og:image"
+          content="assets/images/preview.png">
+
+    <!-- ========================================
+                FAVICON
+    ========================================= -->
+
+      <link rel="icon"
+      type="image/svg+xml"
+      href="favicon.svg">
+
+    <!-- ========================================
+                GOOGLE FONTS
+    ========================================= -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+          rel="stylesheet">
+
+    <!-- ========================================
+                  REMIX ICONS
+    ========================================= -->
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css"
+          rel="stylesheet">
+
+    <!-- ========================================
+                    CHART.JS
+    ========================================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- ========================================
+                    CSS
+    ========================================= -->
+
+    <link rel="stylesheet"
+          href="style.css">
+
 </head>
-<body>
-    
-    <header>
-        <h1>🌱 Astrobox Controller</h1>
-        <p>Powered by MOSS OS</p>
-        <p>Smart Ecosystem Controller</p>
-        <p class="online">
-         System Status: 🟢 ONLINE
+
+<!--====================================
+            BACKGROUND
+=====================================-->
+
+<div class="background">
+
+    <div class="gradient"></div>
+
+    <div class="grid"></div>
+
+</div>
+
+<!--====================================
+              HEADER
+=====================================-->
+
+<header class="header">
+
+    <div class="logo">
+
+        <i class="ri-plant-line"></i>
+
+        <div>
+
+            <h2>Moss OS</h2>
+
+            <span>Ecosystem Monitor</span>
+
+        </div>
+
+    </div>
+
+    <nav class="navbar">
+
+        <a href="#hero" class="active">Home</a>
+
+        <a href="#overview">Overview</a>
+
+        <a href="#monitoring">Monitoring</a>
+
+        <a href="#controls">Controls</a>
+
+        <a href="#logs">Logs</a>
+
+    </nav>
+
+    <div class="header-right">
+
+        <div class="status">
+
+            <span class="status-dot"></span>
+
+            <span>ONLINE</span>
+
+        </div>
+
+        <button class="menu-btn">
+
+            <i class="ri-menu-3-line"></i>
+
+        </button>
+
+    </div>
+
+</header>
+
+<main>
+
+    <!--====================================
+                HERO
+=====================================-->
+
+<section id="hero" class="hero">
+
+    <div class="hero-content">
+
+        <span class="hero-tag">
+
+            <i class="ri-cpu-line"></i>
+
+            Intelligent Ecosystem Platform
+
+        </span>
+
+        <h1>
+
+            Moss OS
+
+        </h1>
+
+        <h2>
+
+            Monitor. Analyze. Automate.
+
+        </h2>
+
+        <p>
+
+            A smart ecosystem dashboard that combines environmental
+            sensors, Arduino automation and live analytics into one
+            intelligent monitoring platform.
+
         </p>
-    </header>
 
-<main class="dashboard">
+        <div class="hero-buttons">
 
-    <section class="sensor-grid">
+            <button class="primary-btn">
 
-    <div class="card">
+                <i class="ri-dashboard-3-line"></i>
 
-        <div class="icon">🌡</div>
-        <h2>Air Temperature</h2>
+                Open Dashboard
 
-        <p class="value" id="airTemp">24°C</p>
+            </button>
 
-        <p class="status perfect" id="airTempStatus">🟢 PERFECT</p>
+            <button class="secondary-btn">
 
-    </div>
+                <i class="ri-github-fill"></i>
 
-    <div class="card">
-        <div class="icon">💧</div>
+                View Source
 
-        <h2>Humidity</h2>
+            </button>
 
-        <p class="value" id="humidity">90%</p>
-
-        <p class="status perfect" id="humidityStatus">🟢 PERFECT</p>
+        </div>
 
     </div>
 
-    <div class="card">
-        <div class="icon">🥥</div>
+    <div class="hero-health">
 
-        <h2>Soil Moisture</h2>
+        <div class="health-card">
 
-        <p class="value" id="soilMoisture">86%</p>
+            <h3>
 
-        <p class="status warning" id="soilMoistureStatus">🟡 WARNING</p>
+                Ecosystem Health
 
-    </div>
+            </h3>
 
-    <div class="card">
-        <div class="icon">🌱</div>
+            <div class="health-circle">
 
-        <h2>Soil Temperature</h2>
+                98%
 
-        <p class="value" id="soilTemp">20°C</p>
+            </div>
 
-        <p class="status warning" id="soilTempStatus">🟡 WARNING</p>
+            <p>
 
-    </div>
+                Healthy
 
-    <div class="card">
-        <div class="icon">💦</div>
-
-        <h2>Water Level</h2>
-
-        <p  class="value" id="waterLevel">86%</p>
-
-        <p class="status critical" id="waterLevelStatus">🔴 CRITICAL</p>
-
-    </div>
-
-    <div class="card">
-
-    <div class="icon">🟢</div>
-
-    <h2>Ecosystem Health</h2>
-
-    <p class="value" id="ecosystemHealth">92%</p>
-
-    <p class="status perfect" id="ecosystemHealthStatus">🟢 PERFECT</p>
-
-    </div>
-
-    </section>
-
-    <section class="graphSection">
-
-    <h2>📊 AstroBox Live Analytics</h2>
-
-    <canvas id="humidityChart"></canvas>
-
-    </section>
-
-    <section class="controls">
-
-    <h2>🌱 Control Panel</h2>
-
-    <button class="autoBtn" id="autoBtn">
-        🤖 Auto Mode 
-    </button>
-
-    <div class="controlGrid">
-
-        <button class="modeBtn" id="mistBtn">
-            🌫 Mist OFF
-        </button>
-
-        <button class="modeBtn" id="fanBtn">
-            🌬 Fan OFF
-        </button>
-
-        <button class="modeBtn" id="lightBtn">
-            💡 Lights OFF
-        </button>
-
-        <button class="modeBtn" id="dripperBtn">
-            💧 Irrigation OFF
-        </button>
-
-    </div>
-
-    </section>
-
-    <section class="aiPanel">
-
-        <h2>🤖 J.A.R.V.I.S</h2>
-
-        <div class="aiCard">
-
-            <p id="aiStatus">
-                Monitoring Ecosystem...
-            </p>
-            
-            <p id="aiReason">
-                Waiting for sensor data...
             </p>
 
         </div>
 
-        <div class="aiLog">
+    </div>
 
-    <h3>📜 AI Activity Log</h3>
+</section>
 
-    <div id="logContainer">
+<!--====================================
+            SYSTEM OVERVIEW
+=====================================-->
 
-        <p>🤖 System Started...</p>
+<section id="overview">
+
+    <h2>
+
+        System Overview
+
+    </h2>
+
+    <div class="overview-grid">
+
+        <article class="overview-card">
+
+            <i class="ri-temp-hot-line"></i>
+
+            <h3>Temperature</h3>
+
+            <h1 id="airTemp">
+
+                -- °C
+
+            </h1>
+
+        </article>
+
+        <article class="overview-card">
+
+            <i class="ri-water-percent-line"></i>
+
+            <h3>Humidity</h3>
+
+            <h1 id="humidity">
+
+                -- %
+
+            </h1>
+
+        </article>
+
+        <article class="overview-card">
+
+            <i class="ri-plant-line"></i>
+
+            <h3>Soil Moisture</h3>
+
+            <h1 id="soilMoisture">
+
+                -- %
+
+            </h1>
+
+        </article>
+
+        <article class="overview-card">
+
+            <i class="ri-flask-line"></i>
+
+            <h3>Water Level</h3>
+
+            <h1 id="waterLevel">
+
+                -- %
+
+            </h1>
+
+        </article>
+
+        <article class="overview-card">
+
+            <i class="ri-windy-line"></i>
+
+            <h3>Air Quality</h3>
+
+            <h1 id="airQuality">
+
+                Good
+
+            </h1>
+
+        </article>
+
+        <article class="overview-card">
+
+            <i class="ri-leaf-line"></i>
+
+            <h3>Algae Health</h3>
+
+            <h1 id="algaeHealth">
+
+                Healthy
+
+            </h1>
+
+        </article>
 
     </div>
 
+</section>
+
+<!--====================================
+        LIVE MONITORING
+=====================================-->
+
+<section id="monitoring">
+
+    <div class="section-heading">
+
+        <h2>
+
+            Live Monitoring
+
+        </h2>
+
+        <p>
+
+            Real-time ecosystem sensor data
+
+        </p>
+
     </div>
 
-    </section>
+    <div class="chart-tabs">
+
+        <button class="active">
+
+            Today
+
+        </button>
+
+        <button>
+
+            Week
+
+        </button>
+
+        <button>
+
+            Month
+
+        </button>
+
+    </div>
+
+    <div class="chart-container">
+
+        <canvas id="sensorChart">
+
+        </canvas>
+
+    </div>
+
+</section>
+
+<!--====================================
+        CONTROL CENTER
+=====================================-->
+
+<section id="controls">
+
+    <div class="section-heading">
+
+        <h2>
+
+            Control Center
+
+        </h2>
+
+        <p>
+
+            Manual ecosystem controls
+
+        </p>
+
+    </div>
+
+    <div class="controls-grid">
+
+        <button id="lightBtn">
+
+            <i class="ri-lightbulb-line"></i>
+
+            Lights
+
+            <span>AUTO</span>
+
+        </button>
+
+        <button id="fanBtn">
+
+            <i class="ri-windy-line"></i>
+
+            Fan
+
+            <span>OFF</span>
+
+        </button>
+
+        <button id="mistBtn">
+
+            <i class="ri-cloud-line"></i>
+
+            Mist
+
+            <span>OFF</span>
+
+        </button>
+
+        <button id="pumpBtn">
+
+            <i class="ri-drop-line"></i>
+
+            Irrigation
+
+            <span>OFF</span>
+
+        </button>
+
+        <button id="autoBtn">
+
+            <i class="ri-robot-2-line"></i>
+
+            Auto Mode
+
+            <span>ON</span>
+
+        </button>
+
+        <button id="emergencyBtn">
+
+            <i class="ri-alarm-warning-line"></i>
+
+            Emergency Stop
+
+            <span>SAFE</span>
+
+        </button>
+
+    </div>
+
+</section>
+
+<!--====================================
+            SYSTEM LOG
+=====================================-->
+
+<section id="logs">
+
+    <div class="section-heading">
+
+        <h2>
+
+            System Log
+
+        </h2>
+
+    </div>
+
+    <div class="log-window">
+
+        <div class="log-entry">
+
+            <span>
+
+                18:42
+
+            </span>
+
+            <p>
+
+                System Started
+
+            </p>
+
+        </div>
+
+        <div class="log-entry">
+
+            <span>
+
+                18:45
+
+            </span>
+
+            <p>
+
+                Humidity Stable
+
+            </p>
+
+        </div>
+
+        <div class="log-entry">
+
+            <span>
+
+                18:48
+
+            </span>
+
+            <p>
+
+                Monitoring Active
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!--====================================
+            DIAGNOSTICS
+=====================================-->
+
+<section id="system">
+
+    <div class="section-heading">
+
+        <h2>
+
+            Diagnostics
+
+        </h2>
+
+    </div>
+
+    <div class="diagnostics-grid">
+
+        <div>
+
+            <h3>Arduino</h3>
+
+            <p>Connected</p>
+
+        </div>
+
+        <div>
+
+            <h3>Sensors</h3>
+
+            <p>6 / 6 Online</p>
+
+        </div>
+
+        <div>
+
+            <h3>Software</h3>
+
+            <p>v2.0</p>
+
+        </div>
+
+        <div>
+
+            <h3>Connection</h3>
+
+            <p>USB Serial</p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!--====================================
+            FOOTER
+=====================================-->
+
+<footer>
+
+    <p>
+
+        Moss OS v2.0
+
+    </p>
+
+    <p>
+
+        Built by Arjun Warungase
+
+    </p>
+
+</footer>
 
 </main>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation"></script>
-
-<script src="charts.js"></script>
 
 <script src="script.js"></script>
 
 </body>
+
 </html>
