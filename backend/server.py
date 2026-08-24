@@ -1,5 +1,8 @@
 from fastapi import FastAPI
 
+from backend.state import device_state
+from backend.simulator import get_sensor_data
+
 app = FastAPI()
 
 
@@ -13,11 +16,4 @@ def home():
 
 @app.get("/sensors")
 def sensors():
-    return {
-        "air_temperature": 26.4,
-        "humidity": 82,
-        "soil_temperature": 24.8,
-        "soil_moisture": 61,
-        "water_level": 78,
-        "air_quality": "GOOD"
-    }
+    return get_sensor_data()
