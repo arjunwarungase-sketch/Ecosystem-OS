@@ -1,5 +1,5 @@
 api.txt
 __pycache__/
 *.py[cod]
-backend/.env
+.env
 node_modules/

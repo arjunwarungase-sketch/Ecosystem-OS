@@ -1,0 +1,1060 @@
+/* =========================================================
+   ECOSYSTEM OS
+   Main visual theme
+   ========================================================= */
+
+
+/* =========================
+   RESET
+   ========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #07100d;
+    color: #e8f5ee;
+    overflow: hidden;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+
+/* =========================
+   ROOT OS
+   ========================= */
+
+.ecosystem-os {
+    width: 100vw;
+    height: 100vh;
+    min-height: 600px;
+    background: #07100d;
+    overflow: hidden;
+    position: relative;
+}
+
+
+/* =========================
+   TOP BAR
+   ========================= */
+
+.topbar {
+    height: 82px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 28px;
+    background: #0b1712;
+    border-bottom: 1px solid #1c3328;
+    position: relative;
+    z-index: 1000;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 4px;
+}
+
+.brand-icon {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: #10261b;
+    font-size: 23px;
+}
+
+.brand-text h1 {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+
+.brand-text p {
+    margin-top: 3px;
+    color: #7f9c8d;
+    font-size: 11px;
+}
+
+
+/* =========================
+   CONNECTION STATUS
+   ========================= */
+
+.connection-status {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.connection-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #8ca799;
+    font-size: 11px;
+}
+
+.connection-item strong {
+    color: #dcebe2;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #56665d;
+    box-shadow: 0 0 0 3px #17241e;
+}
+
+
+/* =========================
+   MAIN DESKTOP
+   ========================= */
+
+.desktop {
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    bottom: 36px;
+    overflow: hidden;
+}
+
+
+/* =========================
+   OVERVIEW
+   ========================= */
+
+.overview {
+    position: absolute;
+    inset: 0;
+    padding: 32px 38px 32px 105px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.overview::-webkit-scrollbar {
+    width: 7px;
+}
+
+.overview::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.overview::-webkit-scrollbar-thumb {
+    background: #1d3529;
+    border-radius: 10px;
+}
+
+.overview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.overview-header h2 {
+    font-size: 27px;
+    font-weight: 700;
+}
+
+.overview-header p {
+    margin-top: 5px;
+    color: #799387;
+    font-size: 13px;
+}
+
+.health-summary {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+}
+
+.health-summary span {
+    color: #789185;
+    font-size: 11px;
+}
+
+.health-summary strong {
+    font-size: 25px;
+    color: #72d79c;
+}
+
+
+/* =========================
+   SENSOR CARDS
+   ========================= */
+
+.sensor-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(150px, 1fr));
+    gap: 14px;
+}
+
+.sensor-card {
+    min-height: 120px;
+    padding: 19px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #0d1b15;
+    border: 1px solid #1b3227;
+    border-radius: 15px;
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+.sensor-card:hover {
+    transform: translateY(-2px);
+    background: #10221a;
+    border-color: #2d5a43;
+}
+
+.sensor-icon {
+    width: 43px;
+    height: 43px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: #14271e;
+    font-size: 21px;
+}
+
+.sensor-content {
+    min-width: 0;
+}
+
+.sensor-content p {
+    color: #7f998b;
+    font-size: 11px;
+    margin-bottom: 7px;
+}
+
+.sensor-content strong {
+    color: #e8f5ee;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+
+/* =========================
+   JARVIS IDLE PANEL
+   ========================= */
+
+.jarvis-idle-panel {
+    margin-top: 18px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 18px;
+    background: #0d1b15;
+    border: 1px solid #1b3227;
+    border-radius: 15px;
+}
+
+.jarvis-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.jarvis-title > span {
+    width: 45px;
+    height: 45px;
+    display: grid;
+    place-items: center;
+    border-radius: 13px;
+    background: #14271e;
+    font-size: 22px;
+}
+
+.jarvis-title h3 {
+    font-size: 15px;
+}
+
+.jarvis-title p {
+    margin-top: 4px;
+    color: #799387;
+    font-size: 11px;
+}
+
+.jarvis-idle-panel > p {
+    color: #b6cbbf;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.jarvis-state {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+}
+
+.jarvis-state span {
+    color: #789185;
+    font-size: 10px;
+}
+
+.jarvis-state strong {
+    color: #72d79c;
+    font-size: 11px;
+}
+
+
+/* =========================
+   ACTIVE SYSTEMS
+   ========================= */
+
+.active-systems {
+    margin-top: 25px;
+}
+
+.active-systems > h3 {
+    margin-bottom: 13px;
+    color: #c9ddd1;
+    font-size: 14px;
+}
+
+.system-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+}
+
+.system-card {
+    padding: 17px;
+    background: #0d1b15;
+    border: 1px solid #1b3227;
+    border-radius: 14px;
+}
+
+.system-card span {
+    font-size: 20px;
+}
+
+.system-card p {
+    margin-top: 12px;
+    color: #7e9789;
+    font-size: 11px;
+}
+
+.system-card strong {
+    display: block;
+    margin-top: 5px;
+    color: #d9eae0;
+    font-size: 13px;
+}
+
+
+/* =========================
+   SIDEBAR / DOCK
+   ========================= */
+
+.sidebar {
+    position: absolute;
+    left: 18px;
+    top: 20px;
+    bottom: 20px;
+    width: 62px;
+    z-index: 900;
+}
+
+.app-dock {
+    width: 62px;
+    height: 100%;
+    padding: 10px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    background: rgba(11, 23, 18, 0.94);
+    border: 1px solid #1c3428;
+    border-radius: 18px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.28);
+}
+
+.dock-item {
+    width: 44px;
+    height: 44px;
+    position: relative;
+    border: none;
+    border-radius: 12px;
+    background: transparent;
+    color: #89a193;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    transition:
+        background 0.18s ease,
+        color 0.18s ease,
+        transform 0.18s ease;
+}
+
+.dock-item:hover {
+    background: #172c21;
+    color: #ffffff;
+    transform: scale(1.06);
+}
+
+.dock-item.active {
+    background: #1b3a2a;
+    color: #ffffff;
+}
+
+.dock-icon {
+    font-size: 20px;
+    line-height: 1;
+}
+
+.dock-tooltip {
+    position: absolute;
+    left: 56px;
+    top: 50%;
+    transform: translateY(-50%) translateX(-5px);
+    padding: 7px 10px;
+    white-space: nowrap;
+    background: #14231c;
+    border: 1px solid #284535;
+    border-radius: 7px;
+    color: #e6f2eb;
+    font-size: 11px;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+        opacity 0.15s ease,
+        transform 0.15s ease;
+    z-index: 2000;
+}
+
+.dock-item:hover .dock-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) translateX(0);
+}
+
+
+/* =========================
+   FLOATING WINDOWS
+   ========================= */
+
+.app-window {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: min(720px, calc(100% - 180px));
+    max-height: calc(100% - 70px);
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    background: #0b1712;
+    border: 1px solid #294738;
+    border-radius: 16px;
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.55),
+        0 0 0 1px rgba(255, 255, 255, 0.015);
+    overflow: hidden;
+    z-index: 1100;
+}
+
+.app-window[hidden] {
+    display: none;
+}
+
+.window-header {
+    min-height: 58px;
+    padding: 0 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #101f17;
+    border-bottom: 1px solid #20382b;
+    cursor: default;
+}
+
+.window-header > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.window-header > div > span {
+    font-size: 18px;
+}
+
+.window-header h2 {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.window-close {
+    width: 31px;
+    height: 31px;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: #789185;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.window-close:hover {
+    background: #301b1b;
+    color: #ffffff;
+}
+
+.window-content {
+    padding: 24px;
+    overflow-y: auto;
+}
+
+.window-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.window-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.window-content::-webkit-scrollbar-thumb {
+    background: #223d2f;
+    border-radius: 10px;
+}
+
+.window-subtitle {
+    margin-bottom: 20px;
+    color: #789185;
+    font-size: 12px;
+}
+
+
+/* =========================
+   TELEMETRY
+   ========================= */
+
+.telemetry-readings {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 14px 0 25px;
+}
+
+.telemetry-panel {
+    padding: 15px;
+    background: #0e1c16;
+    border: 1px solid #1d3528;
+    border-radius: 11px;
+}
+
+.window-content h3 {
+    color: #d9e9df;
+    font-size: 13px;
+}
+
+.graph-container {
+    height: 260px;
+    margin-top: 13px;
+    padding: 15px;
+    background: #08110d;
+    border: 1px solid #1b3226;
+    border-radius: 11px;
+}
+
+
+/* =========================
+   JARVIS WINDOW
+   ========================= */
+
+.jarvis-analysis {
+    margin-top: 18px;
+    padding: 18px;
+    background: #0e1d16;
+    border: 1px solid #1f3b2d;
+    border-radius: 12px;
+}
+
+.jarvis-analysis h3 {
+    margin-bottom: 10px;
+}
+
+.jarvis-analysis p {
+    color: #b5c9bd;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.jarvis-decision {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.jarvis-decision > div {
+    padding: 16px;
+    background: #0e1c16;
+    border: 1px solid #1d3528;
+    border-radius: 11px;
+}
+
+.jarvis-decision span {
+    display: block;
+    margin-bottom: 7px;
+    color: #718c7d;
+    font-size: 10px;
+}
+
+.jarvis-decision strong {
+    color: #dcebe2;
+    font-size: 12px;
+}
+
+
+/* =========================
+   AUTOMATION
+   ========================= */
+
+.automation-row {
+    padding: 17px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    background: #0e1c16;
+    border: 1px solid #1d3528;
+    border-radius: 11px;
+}
+
+.automation-row + .automation-row {
+    margin-top: 10px;
+}
+
+.automation-row h3 {
+    margin-bottom: 5px;
+}
+
+.automation-row p {
+    color: #789185;
+    font-size: 11px;
+}
+
+
+/* =========================
+   SWITCH
+   ========================= */
+
+.switch {
+    position: relative;
+    width: 42px;
+    height: 23px;
+    flex-shrink: 0;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.switch span {
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    background: #263a30;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.switch span::before {
+    content: "";
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    left: 3px;
+    top: 3px;
+    border-radius: 50%;
+    background: #b8c8bf;
+    transition: 0.2s;
+}
+
+.switch input:checked + span {
+    background: #246342;
+}
+
+.switch input:checked + span::before {
+    transform: translateX(19px);
+    background: #ffffff;
+}
+
+
+/* =========================
+   CONTROLS
+   ========================= */
+
+.control-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 13px;
+}
+
+.control-button {
+    min-height: 125px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    border: 1px solid #1d3528;
+    border-radius: 13px;
+    background: #0e1c16;
+    color: #dcebe2;
+    cursor: pointer;
+    text-align: left;
+    transition:
+        background 0.18s ease,
+        border-color 0.18s ease,
+        transform 0.18s ease;
+}
+
+.control-button:hover {
+    background: #12251b;
+    border-color: #2b5540;
+    transform: translateY(-2px);
+}
+
+.control-button > span {
+    font-size: 23px;
+}
+
+.control-button p {
+    margin-top: 10px;
+    color: #839c8f;
+    font-size: 11px;
+}
+
+.control-button strong {
+    color: #73d59b;
+    font-size: 12px;
+}
+
+
+/* =========================
+   HEALTH
+   ========================= */
+
+.health-score {
+    padding: 25px;
+    text-align: center;
+    background: #0e1c16;
+    border: 1px solid #1d3528;
+    border-radius: 13px;
+}
+
+.health-score strong {
+    display: block;
+    color: #72d79c;
+    font-size: 42px;
+}
+
+.health-score span {
+    color: #789185;
+    font-size: 11px;
+}
+
+.health-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.health-metrics > div {
+    padding: 15px;
+    background: #0e1c16;
+    border: 1px solid #1d3528;
+    border-radius: 11px;
+}
+
+.health-metrics span {
+    display: block;
+    color: #839b8e;
+    font-size: 11px;
+}
+
+.health-metrics strong {
+    display: block;
+    margin-top: 8px;
+    color: #dcebe2;
+    font-size: 14px;
+}
+
+
+/* =========================
+   INSIGHTS
+   ========================= */
+
+.insight-card {
+    padding: 17px;
+    display: flex;
+    gap: 13px;
+    background: #0e1c16;
+    border: 1px solid #1d3528;
+    border-radius: 11px;
+}
+
+.insight-card > span {
+    font-size: 22px;
+}
+
+.insight-card h3 {
+    margin-bottom: 6px;
+}
+
+.insight-card p {
+    color: #80998c;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+
+/* =========================
+   ABOUT
+   ========================= */
+
+.about-content > h3 {
+    margin-bottom: 14px;
+    font-size: 18px;
+}
+
+.about-content > p {
+    margin-bottom: 14px;
+    color: #a9c0b3;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.motive-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.motive-grid article {
+    padding: 17px;
+    background: #0e1c16;
+    border: 1px solid #1d3528;
+    border-radius: 11px;
+}
+
+.motive-grid article > span {
+    font-size: 22px;
+}
+
+.motive-grid h4 {
+    margin-top: 11px;
+    color: #dcebe2;
+    font-size: 12px;
+}
+
+.motive-grid p {
+    margin-top: 6px;
+    color: #7f988b;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+
+/* =========================
+   STATUS BAR
+   ========================= */
+
+.status-bar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 36px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    background: #09130f;
+    border-top: 1px solid #1a3025;
+    color: #637b6e;
+    font-size: 10px;
+    z-index: 1000;
+}
+
+.status-bar strong {
+    color: #9db4a6;
+}
+
+
+/* =========================
+   GENERAL STATE COLORS
+   ========================= */
+
+.status-online {
+    background: #5fd48f;
+}
+
+.status-warning {
+    background: #d6b45e;
+}
+
+.status-critical {
+    background: #d96868;
+}
+
+
+/* =========================
+   SELECTION
+   ========================= */
+
+::selection {
+    background: #285a40;
+    color: #ffffff;
+}
+
+/* =========================================================
+   ECOSYSTEM OS WINDOW CONTROLS
+   ========================================================= */
+
+.window-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.window-title span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.window-title h2 {
+    margin: 0;
+}
+
+
+/* =========================================================
+   WINDOW CONTROL GROUP
+   ========================================================= */
+
+.window-controls {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: auto;
+}
+
+
+/* =========================================================
+   WINDOW CONTROL BUTTONS
+   ========================================================= */
+
+.window-controls button {
+    width: 34px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: none;
+    border-radius: 6px;
+
+    background: transparent;
+    color: #e8f5ee;
+
+    font-size: 17px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        color 0.15s ease;
+}
+
+
+/* Hover */
+
+.window-controls button:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+
+/* Minimize */
+
+.window-minimize:hover {
+    background: rgba(255, 255, 255, 0.10);
+}
+
+
+/* Maximize */
+
+.window-maximize:hover {
+    background: rgba(255, 255, 255, 0.10);
+}
+
+
+/* Close */
+
+.window-close:hover {
+    background: rgba(255, 70, 70, 0.75);
+    color: white;
+}
+
+
+/* =========================================================
+   WINDOW HEADER
+   ========================================================= */
+
+.window-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 46px;
+}
+
+
+/* =========================================================
+   WINDOW CONTENT
+   ========================================================= */
+
+.window-content {
+    overflow: auto;
+}
