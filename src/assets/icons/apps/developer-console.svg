@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-labelledby="title">
+  <title id="title">Developer Console</title>
+  <g fill="none" stroke="#78D5A3" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="4" y="7" width="40" height="32" rx="5"/><path d="M4 15h40M12 24l6 5-6 5M23 34h10"/><circle cx="10" cy="11" r=".5"/><circle cx="14" cy="11" r=".5"/>
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+/* Shared reusable widget and status refinements */
+.dashboard-widget { animation:widget-arrive .35s ease both; }
+.dashboard-widget:nth-child(2) { animation-delay:.025s; }
+.dashboard-widget:nth-child(3) { animation-delay:.05s; }
+.dashboard-widget:nth-child(4) { animation-delay:.075s; }
+.dashboard-widget:nth-child(5) { animation-delay:.1s; }
+.dashboard-widget:nth-child(6) { animation-delay:.125s; }
+.dashboard-widget:hover { border-color:rgba(141,224,176,.34); }
+.widget-status { white-space:nowrap; }
+#widget-actuator-summary li { padding:5px 0; border-bottom:1px solid var(--border); font-size:12px; }
+#widget-actuator-summary li:last-child { border-bottom:0; }
+#widget-actuator-summary li span { float:right; color:var(--warning); }
+@keyframes widget-arrive { from { opacity:0; transform:translateY(7px); } to { opacity:1; transform:translateY(0); } }
+@media (prefers-reduced-motion:reduce) { .dashboard-widget { animation:none; } }

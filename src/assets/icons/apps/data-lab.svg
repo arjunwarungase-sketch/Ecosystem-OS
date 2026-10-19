@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-labelledby="title">
+  <title id="title">Data Lab</title>
+  <g fill="none" stroke="#78D5A3" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="24" cy="10" rx="16" ry="6"/><path d="M8 10v28c0 4 7 7 16 7s16-3 16-7V10M8 24c0 4 7 7 16 7s16-3 16-7"/><path d="m16 37 5-6 5 2 7-8"/>
+  </g>
+</svg>

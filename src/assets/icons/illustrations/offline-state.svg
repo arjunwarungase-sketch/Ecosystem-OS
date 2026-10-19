@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180" role="img" aria-labelledby="title desc">
+<title id="title">Connection offline</title><desc id="desc">A disconnected network symbol with a small warning indicator.</desc>
+<g fill="none" stroke="#78D5A3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="120" cy="82" r="37" opacity=".35"/><path d="M83 82H61M157 82h22"/><circle cx="54" cy="82" r="7"/><circle cx="186" cy="82" r="7"/>
+<path d="M100 72c12-11 28-11 40 0M108 82c7-6 17-6 24 0M117 92l3 3 3-3" opacity=".65"/>
+<path d="m155 112 18 31h-36z"/><path d="M155 123v8M155 136h.1"/>
+</g><path d="M95 55 145 105" stroke="#D6A75D" stroke-width="4" stroke-linecap="round"/>
+</svg>

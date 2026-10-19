@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180" role="img" aria-labelledby="title desc">
+<title id="title">Operation successful</title><desc id="desc">A mint-green checkmark inside a circle with small celebratory dots.</desc>
+<g fill="none" stroke="#78D5A3" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="120" cy="88" r="42"/><path d="m99 88 14 14 29-31"/>
+<path d="M65 54l-8-8M175 54l8-8M60 110h-11M180 110h11"/>
+</g><circle cx="78" cy="35" r="3" fill="#78D5A3"/><circle cx="166" cy="32" r="4" fill="#78D5A3"/><circle cx="190" cy="80" r="2.5" fill="#78D5A3"/>
+</svg>

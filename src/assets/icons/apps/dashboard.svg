@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-labelledby="title">
+  <title id="title">Dashboard</title>
+  <g fill="none" stroke="#78D5A3" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="5" y="6" width="38" height="36" rx="7"/><path d="M5 16h38"/><path d="M11 11h.1M16 11h.1M21 11h.1"/><path d="M12 25h8v10h-8zM25 22h12v6H25zM25 31h12v4H25z"/>
+  </g>
+</svg>

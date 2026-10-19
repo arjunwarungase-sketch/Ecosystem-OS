@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-labelledby="title">
+  <title id="title">Warden AI</title>
+  <g fill="none" stroke="#78D5A3" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M24 5 39 13v17L24 39 9 30V13L24 5Z"/><path d="M17 19h.1M31 19h.1M17 26c4 5 10 5 14 0"/><path d="M24 5V2M9 17 4 14M39 17l5-3M24 39v4"/>
+  </g>
+</svg>

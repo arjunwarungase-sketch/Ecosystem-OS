@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-labelledby="title">
+  <title id="title">Telemetrics</title>
+  <g fill="none" stroke="#78D5A3" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 40V7M6 40h36"/><path d="m10 32 8-9 7 4 10-14 5 4"/><circle cx="18" cy="23" r="2"/><circle cx="25" cy="27" r="2"/><circle cx="35" cy="13" r="2"/>
+  </g>
+</svg>

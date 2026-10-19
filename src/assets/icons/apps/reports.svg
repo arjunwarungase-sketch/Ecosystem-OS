@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-labelledby="title">
+  <title id="title">Reports</title>
+  <g fill="none" stroke="#78D5A3" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M11 5h19l8 8v29H11z"/><path d="M30 5v9h8M17 34v-7M23 34V20M29 34v-9"/>
+  </g>
+</svg>

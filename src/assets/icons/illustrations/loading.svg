@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180" role="img" aria-labelledby="title desc">
+<title id="title">Loading</title><desc id="desc">A central ecosystem node connected to surrounding nodes, representing work in progress.</desc>
+<g fill="none" stroke="#78D5A3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<path d="M120 78 77 48M120 78l48-29M120 78l-2 52M120 78l-49 43M120 78l54 43" opacity=".6"/>
+<circle cx="120" cy="78" r="17"/><circle cx="77" cy="48" r="7"/><circle cx="168" cy="49" r="7"/><circle cx="118" cy="130" r="7"/><circle cx="71" cy="121" r="7"/><circle cx="174" cy="121" r="7"/>
+</g><circle cx="120" cy="78" r="5" fill="#78D5A3"/>
+</svg>

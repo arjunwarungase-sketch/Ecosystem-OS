@@ -1,0 +1,474 @@
+
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#11131a">
+  <meta name="description" content="Ecosystem OS: an intelligent ecosystem monitoring and control desktop.">
+  <title>Ecosystem OS</title>
+  <link rel="icon" type="image/svg+xml" href="src/assets/branding/favicon.svg">
+  <link rel="stylesheet" href="src/css/main.css">
+  <script src="src/js/main.js" defer></script>
+</head>
+
+<body>
+  <main class="desktop" id="desktop">
+    <div class="desktop__wallpaper wallpaper-tahoe-dark" id="desktop-wallpaper"></div>
+    <div class="desktop__shade"></div>
+
+    <header class="system-bar">
+      <div class="bar-left">
+        <img class="brand-mark" src="src/assets/branding/ecosystem-os-mark.svg" alt="">
+        <span class="brand-name">Ecosystem OS</span>
+        <button class="bar-menu-button" id="tools-button" type="button">Tools</button>
+        <button class="bar-menu-button" id="options-button" type="button">Options</button>
+      </div>
+
+      <form class="universal-search" id="warden-search">
+        <span aria-hidden="true">⌕</span>
+        <input id="warden-search-input" type="search"
+          placeholder="Search or Ask Warden..." autocomplete="off"
+          aria-label="Search or Ask Warden">
+        <kbd>Enter</kbd>
+      </form>
+
+      <div class="bar-right">
+        <button class="icon-button" data-open-app="alerts" type="button"
+          aria-label="Notifications" title="Notifications">♧</button>
+        <button class="icon-button" data-open-app="settings" type="button"
+          aria-label="Settings" title="Settings">⚙</button>
+        <div class="bar-clock" id="system-clock">--:--</div>
+      </div>
+
+      <div class="bar-menu" id="tools-menu" hidden>
+        <button type="button" data-open-app="system-monitor">System Monitor</button>
+        <button type="button" data-open-app="telemetrics">Telemetrics</button>
+        <button type="button" data-open-app="device-manager">Device Manager</button>
+        <button type="button" data-open-app="automation-studio">Automation Studio</button>
+        <button type="button" data-open-app="developer-console" hidden>Developer Console</button>
+      </div>
+
+      <div class="bar-menu" id="options-menu" hidden>
+        <button type="button" data-open-app="settings">Desktop Settings</button>
+        <button type="button" data-open-app="file-manager">File Manager</button>
+        <button type="button" data-open-app="warden">Open Warden AI</button>
+      </div>
+    </header>
+
+    <section class="desktop-workspace" aria-label="Desktop">
+      <nav class="desktop-shortcuts" aria-label="Desktop shortcuts">
+        <button class="desktop-shortcut" data-open-launchpad type="button">
+          <img src="src/assets/icons/apps/launchpad.svg" alt="">
+          <span>Launchpad</span>
+        </button>
+        <button class="desktop-shortcut" data-open-app="file-manager" type="button">
+          <img src="src/assets/icons/apps/file-manager.svg" alt="">
+          <span>File Manager</span>
+        </button>
+        <button class="desktop-shortcut" data-open-app="settings" type="button">
+          <img src="src/assets/icons/apps/settings.svg" alt="">
+          <span>Settings</span>
+        </button>
+        <button class="desktop-shortcut" data-open-app="warden" type="button">
+          <img src="src/assets/icons/apps/warden.svg" alt="">
+          <span>Warden AI</span>
+        </button>
+      </nav>
+
+      <section class="desktop-hero" aria-label="Date and time">
+        <div class="desktop-clock" id="desktop-clock">--:--</div>
+        <div class="desktop-date" id="desktop-date">Loading date…</div>
+        <p class="desktop-greeting">Your ecosystem, at a glance.</p>
+      </section>
+
+      <section class="dashboard-widgets" aria-label="Dashboard widgets">
+        <article class="dashboard-widget" id="widget-system">
+          <div class="widget-heading">
+            <img src="src/assets/icons/apps/system-monitor.svg" alt="">
+            <h2>System</h2>
+            <span class="status-dot" id="system-status-dot"></span>
+          </div>
+          <div class="widget-metrics">
+            <div><span>CPU</span><strong id="cpu-usage">--</strong></div>
+            <div><span>Memory</span><strong id="memory-usage">--</strong></div>
+          </div>
+          <p class="widget-footnote" id="system-health">Waiting for system data</p>
+        </article>
+
+        <article class="dashboard-widget" id="widget-telemetry">
+          <div class="widget-heading">
+            <img src="src/assets/icons/apps/telemetrics.svg" alt="">
+            <h2>Telemetry</h2>
+            <span class="widget-live-label">LIVE DATA</span>
+          </div>
+          <div class="widget-metrics">
+            <div><span>Air temp</span><strong id="air-temperature">-- °C</strong></div>
+            <div><span>Humidity</span><strong id="air-humidity">--%</strong></div>
+          </div>
+          <div class="widget-single-metric">
+            <span>Soil moisture</span><strong id="soil-moisture">--%</strong>
+          </div>
+        </article>
+
+        <article class="dashboard-widget" id="widget-controls">
+          <div class="widget-heading">
+            <img src="src/assets/icons/apps/device-manager.svg" alt="">
+            <h2>Ecosystem Controls</h2>
+          </div>
+          <div class="control-summary">
+            <span><i class="control-indicator"></i>Irrigation</span>
+            <span><i class="control-indicator"></i>Grow lights</span>
+            <span><i class="control-indicator"></i>Mist maker</span>
+            <span><i class="control-indicator"></i>Fan</span>
+            <span><i class="control-indicator"></i>Algae circulation</span>
+          </div>
+          <button class="widget-action" data-open-app="ecosystem-controls" type="button">
+            Open controls <span>↗</span>
+          </button>
+        </article>
+
+        <article class="dashboard-widget" id="widget-warden">
+          <div class="widget-heading">
+            <img src="src/assets/icons/apps/warden.svg" alt="">
+            <h2>Warden AI</h2>
+            <span class="warden-status">STANDBY</span>
+          </div>
+          <p class="warden-summary" id="warden-summary">
+            Waiting for telemetry and system checks.
+          </p>
+          <button class="widget-action" data-open-app="warden" type="button">
+            Ask Warden <span>↗</span>
+          </button>
+        </article>
+      </section>
+    </section>
+
+    <section class="window-layer" id="window-layer" aria-label="Open applications">
+      <article class="app-window" id="window-warden" data-app="warden" hidden>
+        <header class="window-header">
+          <div class="window-title">
+            <img src="src/assets/icons/apps/warden.svg" alt="">
+            <span>Warden AI</span>
+          </div>
+          <div class="window-controls">
+            <button type="button" data-minimize-window aria-label="Minimize">−</button>
+            <button type="button" data-maximize-window aria-label="Maximize">□</button>
+            <button type="button" data-close-window aria-label="Close">×</button>
+          </div>
+        </header>
+        <div class="window-content warden-layout">
+          <div class="app-intro">
+            <h2>Warden AI</h2>
+            <p>Your ecosystem assistant. Sensor data and device access may be unavailable until connected.</p>
+          </div>
+          <div class="warden-conversation" id="warden-conversation" aria-live="polite">
+            <p class="conversation-message assistant-message">
+              Warden is ready when its AI service is configured.
+            </p>
+          </div>
+          <form class="warden-chat-form" id="warden-chat-form">
+            <textarea id="warden-message" rows="2" placeholder="Ask about your ecosystem…"
+              aria-label="Message Warden"></textarea>
+            <button class="primary-button" type="submit">Send</button>
+          </form>
+        </div>
+      </article>
+
+      <article class="app-window" id="window-system-monitor" data-app="system-monitor" hidden>
+        <header class="window-header">
+          <div class="window-title"><img src="src/assets/icons/apps/system-monitor.svg" alt=""><span>System Monitor</span></div>
+          <div class="window-controls">
+            <button type="button" data-minimize-window aria-label="Minimize">−</button>
+            <button type="button" data-maximize-window aria-label="Maximize">□</button>
+            <button type="button" data-close-window aria-label="Close">×</button>
+          </div>
+        </header>
+        <div class="window-content">
+          <h2>System overview</h2>
+          <div class="detail-grid">
+            <div class="detail-card"><span>CPU usage</span><strong id="monitor-cpu">Unavailable</strong></div>
+            <div class="detail-card"><span>Memory usage</span><strong id="monitor-memory">Unavailable</strong></div>
+            <div class="detail-card"><span>System health</span><strong id="monitor-health">Unknown</strong></div>
+          </div>
+          <p class="muted">Live host metrics require a connected backend. Browser estimates are not real hardware readings.</p>
+        </div>
+      </article>
+
+      <article class="app-window" id="window-telemetrics" data-app="telemetrics" hidden>
+        <header class="window-header">
+          <div class="window-title"><img src="src/assets/icons/apps/telemetrics.svg" alt=""><span>Telemetrics</span></div>
+          <div class="window-controls">
+            <button type="button" data-minimize-window aria-label="Minimize">−</button>
+            <button type="button" data-maximize-window aria-label="Maximize">□</button>
+            <button type="button" data-close-window aria-label="Close">×</button>
+          </div>
+        </header>
+        <div class="window-content">
+          <h2>Environmental telemetry</h2>
+          <div class="detail-grid">
+            <div class="detail-card"><span>Air temperature</span><strong id="detail-air-temperature">-- °C</strong></div>
+            <div class="detail-card"><span>Air humidity</span><strong id="detail-air-humidity">--%</strong></div>
+            <div class="detail-card"><span>Soil temperature</span><strong id="detail-soil-temperature">-- °C</strong></div>
+            <div class="detail-card"><span>Soil moisture</span><strong id="detail-soil-moisture">--%</strong></div>
+            <div class="detail-card"><span>Water level</span><strong id="detail-water-level">Unknown</strong></div>
+            <div class="detail-card"><span>Air quality</span><strong id="detail-air-quality">Unknown</strong></div>
+          </div>
+          <p class="muted">No readings are fabricated. Values remain unavailable until a sensor source is connected.</p>
+        </div>
+      </article>
+
+      <article class="app-window" id="window-file-manager" data-app="file-manager" hidden>
+        <header class="window-header">
+          <div class="window-title"><img src="src/assets/icons/apps/file-manager.svg" alt=""><span>File Manager</span></div>
+          <div class="window-controls">
+            <button type="button" data-minimize-window aria-label="Minimize">−</button>
+            <button type="button" data-maximize-window aria-label="Maximize">□</button>
+            <button type="button" data-close-window aria-label="Close">×</button>
+          </div>
+        </header>
+        <div class="window-content">
+          <h2>Files</h2>
+          <div class="file-list">
+            <div class="file-row"><span>▣</span><div><strong>Telemetry</strong><small>Sensor data</small></div></div>
+            <div class="file-row"><span>▣</span><div><strong>Experiments</strong><small>Experiment records</small></div></div>
+            <div class="file-row"><span>▣</span><div><strong>Reports</strong><small>Generated reports</small></div></div>
+            <div class="file-row"><span>▣</span><div><strong>Backups</strong><small>System backups</small></div></div>
+          </div>
+          <p class="muted">These are interface entries. Real file browsing requires a backend or File System Access integration.</p>
+        </div>
+      </article>
+
+      <article class="app-window" id="window-settings" data-app="settings" hidden>
+        <header class="window-header">
+          <div class="window-title"><img src="src/assets/icons/apps/settings.svg" alt=""><span>Settings</span></div>
+          <div class="window-controls">
+            <button type="button" data-minimize-window aria-label="Minimize">−</button>
+            <button type="button" data-maximize-window aria-label="Maximize">□</button>
+            <button type="button" data-close-window aria-label="Close">×</button>
+          </div>
+        </header>
+        <div class="window-content">
+          <h2>Personalisation</h2>
+          <label class="setting-row">Appearance
+            <select id="theme-setting">
+              <option value="dark">Dark</option>
+              <option value="light">Light</option>
+              <option value="auto">Automatic</option>
+            </select>
+          </label>
+          <label class="setting-row">Wallpaper
+            <select id="wallpaper-setting">
+              <option value="tahoe-dark">Tahoe Dark</option>
+              <option value="tahoe-light">Tahoe Light</option>
+              <option value="goldengate-dark">Golden Gate Dark</option>
+              <option value="goldengate-light">Golden Gate Light</option>
+            </select>
+          </label>
+          <label class="setting-row">Animations <input id="animations-setting" type="checkbox" checked></label>
+          <label class="setting-row">Interface sounds <input id="sounds-setting" type="checkbox"></label>
+          <p class="muted">Saving and applying settings requires the corresponding JavaScript handlers.</p>
+        </div>
+      </article>
+
+      <article class="app-window" id="window-ecosystem-controls" data-app="ecosystem-controls" hidden>
+        <header class="window-header">
+          <div class="window-title"><img src="src/assets/icons/apps/device-manager.svg" alt=""><span>Ecosystem Controls</span></div>
+          <div class="window-controls">
+            <button type="button" data-minimize-window aria-label="Minimize">−</button>
+            <button type="button" data-maximize-window aria-label="Maximize">□</button>
+            <button type="button" data-close-window aria-label="Close">×</button>
+          </div>
+        </header>
+        <div class="window-content">
+          <h2>Physical devices</h2>
+          <p class="muted">Controls are disabled until the hardware connection and safety checks are verified.</p>
+          <div class="actuator-list">
+            <div class="actuator-row"><div><strong>Irrigation / Drippers</strong><small>Plant water delivery</small></div><button type="button" data-actuator="irrigation" disabled>Unavailable</button></div>
+            <div class="actuator-row"><div><strong>Grow lights</strong><small>Planned 5 red : 1 blue LED ratio</small></div><button type="button" data-actuator="grow-lights" disabled>Unavailable</button></div>
+            <div class="actuator-row"><div><strong>Mist maker</strong><small>Humidity support</small></div><button type="button" data-actuator="mist-maker" disabled>Unavailable</button></div>
+            <div class="actuator-row"><div><strong>Fan</strong><small>Air circulation</small></div><button type="button" data-actuator="fan" disabled>Unavailable</button></div>
+            <div class="actuator-row"><div><strong>Algae water circulation</strong><small>Separate circulation loop</small></div><button type="button" data-actuator="algae-circulation" disabled>Unavailable</button></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="app-window" id="window-device-manager" data-app="device-manager" hidden>
+        <header class="window-header">
+          <div class="window-title"><img src="src/assets/icons/apps/device-manager.svg" alt=""><span>Device Manager</span></div>
+          <div class="window-controls">
+            <button type="button" data-minimize-window aria-label="Minimize">−</button>
+            <button type="button" data-maximize-window aria-label="Maximize">□</button>
+            <button type="button" data-close-window aria-label="Close">×</button>
+          </div>
+        </header>
+        <div class="window-content">
+          <h2>Connected devices</h2>
+          <div class="detail-card"><span>Controller</span><strong>Not connected</strong></div>
+          <div class="detail-card"><span>Sensors</span><strong>Not verified</strong></div>
+          <div class="detail-card"><span>Actuators</span><strong>Not verified</strong></div>
+        </div>
+      </article>
+
+      <article class="app-window" id="window-automation-studio" data-app="automation-studio" hidden>
+        <header class="window-header">
+          <div class="window-title"><img src="src/assets/icons/apps/automation-studio.svg" alt=""><span>Automation Studio</span></div>
+          <div class="window-controls">
+            <button type="button" data-minimize-window aria-label="Minimize">−</button>
+            <button type="button" data-maximize-window aria-label="Maximize">□</button>
+            <button type="button" data-close-window aria-label="Close">×</button>
+          </div>
+        </header>
+        <div class="window-content">
+          <h2>Automations</h2>
+          <p>No automation rules configured.</p>
+          <p class="muted">Rules should use verified sensor inputs, safe thresholds, cooldowns and actuator acknowledgements before activation.</p>
+        </div>
+      </article>
+
+      <article class="app-window" id="window-alerts" data-app="alerts" hidden>
+        <header class="window-header">
+          <div class="window-title"><img src="src/assets/icons/apps/alerts.svg" alt=""><span>Alerts &amp; Incidents</span></div>
+          <div class="window-controls">
+            <button type="button" data-minimize-window aria-label="Minimize">−</button>
+            <button type="button" data-maximize-window aria-label="Maximize">□</button>
+            <button type="button" data-close-window aria-label="Close">×</button>
+          </div>
+        </header>
+        <div class="window-content">
+          <h2>Alerts</h2>
+          <p class="muted">No alert feed connected. This does not mean the ecosystem has been verified as healthy.</p>
+        </div>
+      </article>
+
+      <article class="app-window" id="window-data-lab" data-app="data-lab" hidden>
+        <header class="window-header">
+          <div class="window-title"><img src="src/assets/icons/data-lab.svg" alt=""><span>Data Lab</span></div>
+          <div class="window-controls">
+            <button type="button" data-minimize-window aria-label="Minimize">−</button>
+            <button type="button" data-maximize-window aria-label="Maximize">□</button>
+            <button type="button" data-close-window aria-label="Close">×</button>
+          </div>
+        </header>
+        <div class="window-content"><h2>Data Lab</h2><p class="muted">Connect a data source to analyse sensor history.</p></div>
+      </article>
+
+      <article class="app-window" id="window-experiment-lab" data-app="experiment-lab" hidden>
+        <header class="window-header">
+          <div class="window-title"><img src="src/assets/icons/experiment-lab.svg" alt=""><span>Experiment Lab</span></div>
+          <div class="window-controls">
+            <button type="button" data-minimize-window aria-label="Minimize">−</button>
+            <button type="button" data-maximize-window aria-label="Maximize">□</button>
+            <button type="button" data-close-window aria-label="Close">×</button>
+          </div>
+        </header>
+        <div class="window-content"><h2>Experiments</h2><p class="muted">Create and record ecosystem experiments here.</p></div>
+      </article>
+
+      <article class="app-window" id="window-reports" data-app="reports" hidden>
+        <header class="window-header">
+          <div class="window-title"><img src="src/assets/icons/reports.svg" alt=""><span>Reports</span></div>
+          <div class="window-controls">
+            <button type="button" data-minimize-window aria-label="Minimize">−</button>
+            <button type="button" data-maximize-window aria-label="Maximize">□</button>
+            <button type="button" data-close-window aria-label="Close">×</button>
+          </div>
+        </header>
+        <div class="window-content"><h2>Reports</h2><p class="muted">Reports will appear when telemetry history is available.</p></div>
+      </article>
+
+      <article class="app-window" id="window-backup-recovery" data-app="backup-recovery" hidden>
+        <header class="window-header">
+          <div class="window-title"><img src="src/assets/icons/backup-recovery.svg" alt=""><span>Backup &amp; Recovery</span></div>
+          <div class="window-controls">
+            <button type="button" data-minimize-window aria-label="Minimize">−</button>
+            <button type="button" data-maximize-window aria-label="Maximize">□</button>
+            <button type="button" data-close-window aria-label="Close">×</button>
+          </div>
+        </header>
+        <div class="window-content"><h2>Backup &amp; Recovery</h2><p class="muted">No backups configured.</p></div>
+      </article>
+
+      <article class="app-window" id="window-security-center" data-app="security-center" hidden>
+        <header class="window-header">
+          <div class="window-title"><img src="src/assets/icons/security-center.svg" alt=""><span>Security Center</span></div>
+          <div class="window-controls">
+            <button type="button" data-minimize-window aria-label="Minimize">−</button>
+            <button type="button" data-maximize-window aria-label="Maximize">□</button>
+            <button type="button" data-close-window aria-label="Close">×</button>
+          </div>
+        </header>
+        <div class="window-content"><h2>Security Center</h2><p class="muted">Authentication and permissions status are not yet connected.</p></div>
+      </article>
+
+      <article class="app-window" id="window-developer-console" data-app="developer-console" hidden>
+        <header class="window-header">
+          <div class="window-title"><img src="src/assets/icons/developer-console.svg" alt=""><span>Developer Console</span></div>
+          <div class="window-controls">
+            <button type="button" data-minimize-window aria-label="Minimize">−</button>
+            <button type="button" data-maximize-window aria-label="Maximize">□</button>
+            <button type="button" data-close-window aria-label="Close">×</button>
+          </div>
+        </header>
+        <div class="window-content"><h2>Developer Console</h2><p class="muted">Developer mode and protected diagnostics must be enabled explicitly.</p></div>
+      </article>
+    </section>
+
+    <section class="launchpad" id="launchpad" hidden aria-label="Launchpad">
+      <div class="launchpad-header">
+        <h2>Launchpad</h2>
+        <button class="icon-button" id="close-launchpad" type="button" aria-label="Close Launchpad">×</button>
+      </div>
+      <label class="launchpad-search-wrap">
+        <span aria-hidden="true">⌕</span>
+        <input id="launchpad-search" type="search" placeholder="Search apps…" autocomplete="off">
+      </label>
+      <div class="launchpad-grid" id="launchpad-grid">
+        <button class="launchpad-app" data-open-app="warden" type="button"><img src="src/assets/icons/apps/warden.svg" alt=""><span>Warden AI</span></button>
+        <button class="launchpad-app" data-open-app="system-monitor" type="button"><img src="src/assets/icons/apps/system-monitor.svg" alt=""><span>System Monitor</span></button>
+        <button class="launchpad-app" data-open-app="telemetrics" type="button"><img src="src/assets/icons/apps/telemetrics.svg" alt=""><span>Telemetrics</span></button>
+        <button class="launchpad-app" data-open-app="file-manager" type="button"><img src="src/assets/icons/apps/file-manager.svg" alt=""><span>File Manager</span></button>
+        <button class="launchpad-app" data-open-app="settings" type="button"><img src="src/assets/icons/apps/settings.svg" alt=""><span>Settings</span></button>
+        <button class="launchpad-app" data-open-app="ecosystem-controls" type="button"><img src="src/assets/icons/apps/device-manager.svg" alt=""><span>Ecosystem Controls</span></button>
+        <button class="launchpad-app" data-open-app="device-manager" type="button"><img src="src/assets/icons/apps/device-manager.svg" alt=""><span>Device Manager</span></button>
+        <button class="launchpad-app" data-open-app="automation-studio" type="button"><img src="src/assets/icons/apps/automation-studio.svg" alt=""><span>Automation Studio</span></button>
+        <button class="launchpad-app" data-open-app="alerts" type="button"><img src="src/assets/icons/apps/alerts.svg" alt=""><span>Alerts</span></button>
+        <button class="launchpad-app" data-open-app="data-lab" type="button"><img src="src/assets/icons/data-lab.svg" alt=""><span>Data Lab</span></button>
+        <button class="launchpad-app" data-open-app="experiment-lab" type="button"><img src="src/assets/icons/experiment-lab.svg" alt=""><span>Experiment Lab</span></button>
+        <button class="launchpad-app" data-open-app="reports" type="button"><img src="src/assets/icons/reports.svg" alt=""><span>Reports</span></button>
+        <button class="launchpad-app" data-open-app="backup-recovery" type="button"><img src="src/assets/icons/backup-recovery.svg" alt=""><span>Backup &amp; Recovery</span></button>
+        <button class="launchpad-app" data-open-app="security-center" type="button"><img src="src/assets/icons/security-center.svg" alt=""><span>Security Center</span></button>
+      </div>
+    </section>
+
+    <footer class="dock-area">
+      <nav class="dock" aria-label="Application dock">
+        <button class="dock-app" data-open-launchpad type="button" title="Launchpad" aria-label="Launchpad">
+          <img src="src/assets/icons/apps/launchpad.svg" alt="">
+        </button>
+        <span class="dock-separator"></span>
+        <button class="dock-app" data-open-app="warden" type="button" title="Warden AI" aria-label="Warden AI">
+          <img src="src/assets/icons/apps/warden.svg" alt="">
+        </button>
+        <button class="dock-app" data-open-app="system-monitor" type="button" title="System Monitor" aria-label="System Monitor">
+          <img src="src/assets/icons/apps/system-monitor.svg" alt="">
+        </button>
+        <button class="dock-app" data-open-app="telemetrics" type="button" title="Telemetrics" aria-label="Telemetrics">
+          <img src="src/assets/icons/apps/telemetrics.svg" alt="">
+        </button>
+        <button class="dock-app" data-open-app="ecosystem-controls" type="button" title="Ecosystem Controls" aria-label="Ecosystem Controls">
+          <img src="src/assets/icons/apps/device-manager.svg" alt="">
+        </button>
+        <button class="dock-app" data-open-app="file-manager" type="button" title="File Manager" aria-label="File Manager">
+          <img src="src/assets/icons/apps/file-manager.svg" alt="">
+        </button>
+        <button class="dock-app" data-open-app="settings" type="button" title="Settings" aria-label="Settings">
+          <img src="src/assets/icons/apps/settings.svg" alt="">
+        </button>
+        <span class="dock-separator"></span>
+        <div class="dock-running-apps" id="dock-running-apps"></div>
+      </nav>
+    </footer>
+  </main>
+</body>
+</html>

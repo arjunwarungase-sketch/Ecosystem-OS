@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180" role="img" aria-labelledby="title desc">
+<title id="title">Nothing here yet</title><desc id="desc">An open container with a small sprout, representing an empty state.</desc>
+<g fill="none" stroke="#78D5A3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<path d="M65 65h110l-9 83H74z"/><path d="M55 65h130"/><path d="M120 65V39"/><path d="M120 47c-20 0-29-12-28-25 17-1 28 8 28 25Z"/><path d="M120 39c0-17 12-27 29-26 0 15-10 26-29 26Z"/>
+<path d="M46 150h148" opacity=".45"/><path d="M89 93h62M94 108h52" opacity=".45"/>
+</g><circle cx="54" cy="45" r="4" fill="#78D5A3"/><circle cx="184" cy="35" r="3" fill="#78D5A3"/><circle cx="193" cy="104" r="3" fill="#78D5A3"/>
+</svg>

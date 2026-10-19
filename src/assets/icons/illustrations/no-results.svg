@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180" role="img" aria-labelledby="title desc">
+<title id="title">No results found</title><desc id="desc">A magnifying glass over a simple empty search card.</desc>
+<g fill="none" stroke="#78D5A3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<rect x="48" y="32" width="122" height="104" rx="10" opacity=".65"/><path d="M48 54h122"/><path d="M63 43h.1M72 43h.1M81 43h.1"/>
+<circle cx="133" cy="99" r="24"/><path d="m151 117 20 20"/><path d="M122 99h22M133 88v22" opacity=".6"/>
+<path d="M72 75h28M72 88h17" opacity=".4"/>
+</g>
+</svg>
