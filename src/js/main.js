@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const appNames = {
+    dashboard: "Dashboard",
     warden: "Warden AI",
     "system-monitor": "System Monitor",
     telemetrics: "Telemetrics",
@@ -296,6 +297,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     focusWindow(appWindow);
+
+    appWindow.dispatchEvent(
+      new CustomEvent("app:opened", { bubbles: true, detail: { app: appName } })
+    );
   }
 
   function closeApp(appName) {
@@ -684,100 +689,52 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* =======================================================
-     WARDEN CHAT PLACEHOLDER
+     DESKTOP WIDGET TELEMETRY
      ======================================================= */
 
-  const wardenChatForm = $("#warden-chat-form");
-  const wardenMessage = $("#warden-message");
-  const wardenConversation = $("#warden-conversation");
+  function updateDesktopWidgets(state) {
+    if (!state || !state.connected) return;
 
-  function addConversationMessage(message, role) {
-    if (!wardenConversation) return;
+    const setText = (id, val) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = val;
+    };
 
-    const element = document.createElement("p");
-    element.className =
-      "conversation-message " +
-      (role === "user" ? "user-message" : "assistant-message");
-
-    element.textContent = message;
-
-    wardenConversation.append(element);
-    wardenConversation.scrollTop = wardenConversation.scrollHeight;
-  }
-
-  wardenChatForm?.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    const message = wardenMessage?.value.trim();
-    if (!message) return;
-
-    addConversationMessage(message, "user");
-
-    wardenMessage.value = "";
-
-    addConversationMessage(
-      "Warden's AI service is not connected yet. This message is displayed locally; no AI response has been generated.",
-      "assistant"
-    );
-  });
-
-  /* =======================================================
-     SAFE PLACEHOLDER TELEMETRY
-     ======================================================= */
-
-  function markTelemetryUnavailable() {
-    const values = [
-      "#cpu-usage",
-      "#memory-usage",
-      "#air-temperature",
-      "#air-humidity",
-      "#soil-moisture",
-      "#monitor-cpu",
-      "#monitor-memory",
-      "#detail-air-temperature",
-      "#detail-air-humidity",
-      "#detail-soil-temperature",
-      "#detail-soil-moisture"
-    ];
-
-    values.forEach((selector) => {
-      const element = $(selector);
-      if (!element) return;
-
-      if (selector.includes("temperature")) {
-        element.textContent = "-- °C";
-      } else if (
-        selector.includes("humidity") ||
-        selector.includes("moisture")
-      ) {
-        element.textContent = "--%";
-      } else {
-        element.textContent = "--";
-      }
-    });
+    setText("cpu-usage", `${state.system.cpu}%`);
+    setText("memory-usage", `${state.system.memory}%`);
+    setText("air-temperature", `${state.telemetry.airTemperature} °C`);
+    setText("air-humidity", `${state.telemetry.airHumidity}%`);
+    setText("soil-moisture", `${state.telemetry.soilMoisture}%`);
 
     const health = $("#system-health");
-    if (health) health.textContent = "Waiting for system data";
-
-    const monitorHealth = $("#monitor-health");
-    if (monitorHealth) monitorHealth.textContent = "Unknown";
-
-    const waterLevel = $("#detail-water-level");
-    if (waterLevel) waterLevel.textContent = "Unknown";
-
-    const airQuality = $("#detail-air-quality");
-    if (airQuality) airQuality.textContent = "Unknown";
+    if (health) health.textContent = state.system.health;
 
     const statusDot = $("#system-status-dot");
-    statusDot?.classList.remove("is-online", "is-warning");
-
-    const summary = $("#warden-summary");
-    if (summary) {
-      summary.textContent = "Waiting for telemetry and system checks.";
+    if (statusDot) {
+      statusDot.classList.remove("is-online", "is-warning");
+      if (state.system.health === "Healthy") statusDot.classList.add("is-online");
+      else if (state.system.health === "Warning") statusDot.classList.add("is-warning");
     }
+
+    const wardenSummary = $("#warden-summary");
+    if (wardenSummary) {
+      wardenSummary.textContent = state.alerts.length > 0
+        ? `${state.alerts.length} alert(s). Latest: ${state.alerts[0].message}`
+        : "All systems nominal. Telemetry streaming.";
+    }
+
+    document.querySelectorAll("#widget-controls .control-indicator").forEach((el, i) => {
+      const actuators = state.actuators;
+      const keys = Object.keys(actuators);
+      if (keys[i]) {
+        el.style.background = actuators[keys[i]] ? "var(--success)" : "#8c92a3";
+      }
+    });
   }
 
-  markTelemetryUnavailable();
+  if (window.TelemetryStore) {
+    window.TelemetryStore.subscribe((state) => updateDesktopWidgets(state));
+  }
 
   /* =======================================================
      GLOBAL KEYBOARD SHORTCUTS

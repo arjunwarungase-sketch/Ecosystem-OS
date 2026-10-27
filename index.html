@@ -9,7 +9,36 @@
   <title>Ecosystem OS</title>
   <link rel="icon" type="image/svg+xml" href="src/assets/branding/favicon.svg">
   <link rel="stylesheet" href="src/css/main.css">
+  <link rel="stylesheet" href="src/css/desktop.css">
+  <link rel="stylesheet" href="src/css/dock.css">
+  <link rel="stylesheet" href="src/css/widgets.css">
+  <link rel="stylesheet" href="src/css/windows.css">
+  <script src="src/js/telemetry-store.js" defer></script>
+  <script src="src/js/app-registry.js" defer></script>
+  <script src="src/js/widgets.js" defer></script>
+  <script src="src/js/desktop.js" defer></script>
+  <script src="src/js/dock.js" defer></script>
+  <script src="src/js/launchpad.js" defer></script>
   <script src="src/js/main.js" defer></script>
+  <script src="src/apps/dashboard.js" defer></script>
+  <script src="src/apps/warden.js" defer></script>
+  <script src="src/apps/system-monitor.js" defer></script>
+  <script src="src/apps/telemetrics.js" defer></script>
+  <script src="src/apps/file-manager.js" defer></script>
+  <script src="src/apps/settings.js" defer></script>
+  <script src="src/apps/alerts.js" defer></script>
+  <script src="src/apps/ecosystem-controls.js" defer></script>
+  <script src="src/apps/device-manager.js" defer></script>
+  <script src="src/apps/automation-studio.js" defer></script>
+  <script src="src/apps/data-lab.js" defer></script>
+  <script src="src/apps/experiment-lab.js" defer></script>
+  <script src="src/apps/reports.js" defer></script>
+  <script src="src/apps/backup-recovery.js" defer></script>
+  <script src="src/apps/security-center.js" defer></script>
+  <script src="src/apps/developer-console.js" defer></script>
+  <meta property="og:image" content="https://bolt.new/static/og_default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://bolt.new/static/og_default.png">
 </head>
 
 <body>
@@ -145,6 +174,18 @@
     </section>
 
     <section class="window-layer" id="window-layer" aria-label="Open applications">
+      <article class="app-window" id="window-dashboard" data-app="dashboard" hidden>
+        <header class="window-header">
+          <div class="window-title"><img src="src/assets/icons/apps/dashboard.svg" alt=""><span>Dashboard</span></div>
+          <div class="window-controls">
+            <button type="button" data-minimize-window aria-label="Minimize">−</button>
+            <button type="button" data-maximize-window aria-label="Maximize">□</button>
+            <button type="button" data-close-window aria-label="Close">×</button>
+          </div>
+        </header>
+        <div class="window-content"><h2>Ecosystem Dashboard</h2><p class="muted">A complete overview of your ecosystem at a glance.</p><div class="dashboard-app-grid" id="dashboard-grid"></div></div>
+      </article>
+
       <article class="app-window" id="window-warden" data-app="warden" hidden>
         <header class="window-header">
           <div class="window-title">
@@ -280,16 +321,10 @@
             <button type="button" data-close-window aria-label="Close">×</button>
           </div>
         </header>
-        <div class="window-content">
+        <div class="window-content" id="ecosystem-controls-content">
           <h2>Physical devices</h2>
-          <p class="muted">Controls are disabled until the hardware connection and safety checks are verified.</p>
-          <div class="actuator-list">
-            <div class="actuator-row"><div><strong>Irrigation / Drippers</strong><small>Plant water delivery</small></div><button type="button" data-actuator="irrigation" disabled>Unavailable</button></div>
-            <div class="actuator-row"><div><strong>Grow lights</strong><small>Planned 5 red : 1 blue LED ratio</small></div><button type="button" data-actuator="grow-lights" disabled>Unavailable</button></div>
-            <div class="actuator-row"><div><strong>Mist maker</strong><small>Humidity support</small></div><button type="button" data-actuator="mist-maker" disabled>Unavailable</button></div>
-            <div class="actuator-row"><div><strong>Fan</strong><small>Air circulation</small></div><button type="button" data-actuator="fan" disabled>Unavailable</button></div>
-            <div class="actuator-row"><div><strong>Algae water circulation</strong><small>Separate circulation loop</small></div><button type="button" data-actuator="algae-circulation" disabled>Unavailable</button></div>
-          </div>
+          <div class="ec-controls-status" id="ec-controls-status">Telemetry connected — controls available</div>
+          <div class="actuator-list" id="ec-actuator-list"></div>
         </div>
       </article>
 
@@ -302,11 +337,10 @@
             <button type="button" data-close-window aria-label="Close">×</button>
           </div>
         </header>
-        <div class="window-content">
+        <div class="window-content" id="device-manager-content">
           <h2>Connected devices</h2>
-          <div class="detail-card"><span>Controller</span><strong>Not connected</strong></div>
-          <div class="detail-card"><span>Sensors</span><strong>Not verified</strong></div>
-          <div class="detail-card"><span>Actuators</span><strong>Not verified</strong></div>
+          <div class="device-status-banner">Simulated environment — 1 controller, 7 sensors, 5 actuators</div>
+          <div class="device-manager-list" id="device-manager-list"></div>
         </div>
       </article>
 
@@ -319,10 +353,11 @@
             <button type="button" data-close-window aria-label="Close">×</button>
           </div>
         </header>
-        <div class="window-content">
+        <div class="window-content" id="automation-studio-content">
           <h2>Automations</h2>
-          <p>No automation rules configured.</p>
-          <p class="muted">Rules should use verified sensor inputs, safe thresholds, cooldowns and actuator acknowledgements before activation.</p>
+          <div class="automation-rules" id="automation-rules-list"></div>
+          <button class="primary-button" id="automation-add-btn" style="margin-top:16px;">+ New rule</button>
+          <p class="muted" style="margin-top:14px;">Rules use verified sensor inputs, safe thresholds, cooldowns and actuator acknowledgements before activation.</p>
         </div>
       </article>
 
@@ -335,82 +370,82 @@
             <button type="button" data-close-window aria-label="Close">×</button>
           </div>
         </header>
-        <div class="window-content">
-          <h2>Alerts</h2>
-          <p class="muted">No alert feed connected. This does not mean the ecosystem has been verified as healthy.</p>
+        <div class="window-content" id="alerts-content">
+          <h2>Alerts &amp; Incidents</h2>
+          <div class="alerts-list" id="alerts-list"></div>
         </div>
       </article>
 
       <article class="app-window" id="window-data-lab" data-app="data-lab" hidden>
         <header class="window-header">
-          <div class="window-title"><img src="src/assets/icons/data-lab.svg" alt=""><span>Data Lab</span></div>
+          <div class="window-title"><img src="src/assets/icons/apps/data-lab.svg" alt=""><span>Data Lab</span></div>
           <div class="window-controls">
             <button type="button" data-minimize-window aria-label="Minimize">−</button>
             <button type="button" data-maximize-window aria-label="Maximize">□</button>
             <button type="button" data-close-window aria-label="Close">×</button>
           </div>
         </header>
-        <div class="window-content"><h2>Data Lab</h2><p class="muted">Connect a data source to analyse sensor history.</p></div>
+        <div class="window-content" id="data-lab-content"><h2>Data Lab</h2><p class="muted">Analyse sensor trends and patterns from telemetry history.</p><div id="data-lab-charts"></div></div>
       </article>
 
       <article class="app-window" id="window-experiment-lab" data-app="experiment-lab" hidden>
         <header class="window-header">
-          <div class="window-title"><img src="src/assets/icons/experiment-lab.svg" alt=""><span>Experiment Lab</span></div>
+          <div class="window-title"><img src="src/assets/icons/apps/experiment-lab.svg" alt=""><span>Experiment Lab</span></div>
           <div class="window-controls">
             <button type="button" data-minimize-window aria-label="Minimize">−</button>
             <button type="button" data-maximize-window aria-label="Maximize">□</button>
             <button type="button" data-close-window aria-label="Close">×</button>
           </div>
         </header>
-        <div class="window-content"><h2>Experiments</h2><p class="muted">Create and record ecosystem experiments here.</p></div>
+        <div class="window-content" id="experiment-lab-content"><h2>Experiments</h2><div id="experiment-list"></div><button class="primary-button" id="experiment-add-btn" style="margin-top:16px;">+ New experiment</button></div>
       </article>
 
       <article class="app-window" id="window-reports" data-app="reports" hidden>
         <header class="window-header">
-          <div class="window-title"><img src="src/assets/icons/reports.svg" alt=""><span>Reports</span></div>
+          <div class="window-title"><img src="src/assets/icons/apps/reports.svg" alt=""><span>Reports</span></div>
           <div class="window-controls">
             <button type="button" data-minimize-window aria-label="Minimize">−</button>
             <button type="button" data-maximize-window aria-label="Maximize">□</button>
             <button type="button" data-close-window aria-label="Close">×</button>
           </div>
         </header>
-        <div class="window-content"><h2>Reports</h2><p class="muted">Reports will appear when telemetry history is available.</p></div>
+        <div class="window-content" id="reports-content"><h2>Reports</h2><div id="reports-list"></div></div>
       </article>
 
       <article class="app-window" id="window-backup-recovery" data-app="backup-recovery" hidden>
         <header class="window-header">
-          <div class="window-title"><img src="src/assets/icons/backup-recovery.svg" alt=""><span>Backup &amp; Recovery</span></div>
+          <div class="window-title"><img src="src/assets/icons/apps/backup-recovery.svg" alt=""><span>Backup &amp; Recovery</span></div>
           <div class="window-controls">
             <button type="button" data-minimize-window aria-label="Minimize">−</button>
             <button type="button" data-maximize-window aria-label="Maximize">□</button>
             <button type="button" data-close-window aria-label="Close">×</button>
           </div>
         </header>
-        <div class="window-content"><h2>Backup &amp; Recovery</h2><p class="muted">No backups configured.</p></div>
+        <div class="window-content" id="backup-recovery-content"><h2>Backup &amp; Recovery</h2><div id="backup-list"></div><button class="primary-button" id="backup-create-btn" style="margin-top:16px;">Create backup</button></div>
       </article>
 
       <article class="app-window" id="window-security-center" data-app="security-center" hidden>
         <header class="window-header">
-          <div class="window-title"><img src="src/assets/icons/security-center.svg" alt=""><span>Security Center</span></div>
+          <div class="window-title"><img src="src/assets/icons/apps/security-center.svg" alt=""><span>Security Center</span></div>
           <div class="window-controls">
             <button type="button" data-minimize-window aria-label="Minimize">−</button>
             <button type="button" data-maximize-window aria-label="Maximize">□</button>
             <button type="button" data-close-window aria-label="Close">×</button>
           </div>
         </header>
-        <div class="window-content"><h2>Security Center</h2><p class="muted">Authentication and permissions status are not yet connected.</p></div>
+        <div class="window-content" id="security-center-content"><h2>Security Center</h2><div id="security-status"></div></div>
       </article>
 
       <article class="app-window" id="window-developer-console" data-app="developer-console" hidden>
         <header class="window-header">
-          <div class="window-title"><img src="src/assets/icons/developer-console.svg" alt=""><span>Developer Console</span></div>
+          <div class="window-title"><img src="src/assets/icons/apps/developer-console.svg" alt=""><span>Developer Console</span></div>
           <div class="window-controls">
             <button type="button" data-minimize-window aria-label="Minimize">−</button>
             <button type="button" data-maximize-window aria-label="Maximize">□</button>
             <button type="button" data-close-window aria-label="Close">×</button>
           </div>
         </header>
-        <div class="window-content"><h2>Developer Console</h2><p class="muted">Developer mode and protected diagnostics must be enabled explicitly.</p></div>
+        <div class="window-content" id="developer-console-content"><h2>Developer Console</h2><div id="console-output"></div></div>
       </article>
     </section>
 
@@ -424,6 +459,7 @@
         <input id="launchpad-search" type="search" placeholder="Search apps…" autocomplete="off">
       </label>
       <div class="launchpad-grid" id="launchpad-grid">
+        <button class="launchpad-app" data-open-app="dashboard" type="button"><img src="src/assets/icons/apps/dashboard.svg" alt=""><span>Dashboard</span></button>
         <button class="launchpad-app" data-open-app="warden" type="button"><img src="src/assets/icons/apps/warden.svg" alt=""><span>Warden AI</span></button>
         <button class="launchpad-app" data-open-app="system-monitor" type="button"><img src="src/assets/icons/apps/system-monitor.svg" alt=""><span>System Monitor</span></button>
         <button class="launchpad-app" data-open-app="telemetrics" type="button"><img src="src/assets/icons/apps/telemetrics.svg" alt=""><span>Telemetrics</span></button>
@@ -433,11 +469,11 @@
         <button class="launchpad-app" data-open-app="device-manager" type="button"><img src="src/assets/icons/apps/device-manager.svg" alt=""><span>Device Manager</span></button>
         <button class="launchpad-app" data-open-app="automation-studio" type="button"><img src="src/assets/icons/apps/automation-studio.svg" alt=""><span>Automation Studio</span></button>
         <button class="launchpad-app" data-open-app="alerts" type="button"><img src="src/assets/icons/apps/alerts.svg" alt=""><span>Alerts</span></button>
-        <button class="launchpad-app" data-open-app="data-lab" type="button"><img src="src/assets/icons/data-lab.svg" alt=""><span>Data Lab</span></button>
-        <button class="launchpad-app" data-open-app="experiment-lab" type="button"><img src="src/assets/icons/experiment-lab.svg" alt=""><span>Experiment Lab</span></button>
-        <button class="launchpad-app" data-open-app="reports" type="button"><img src="src/assets/icons/reports.svg" alt=""><span>Reports</span></button>
-        <button class="launchpad-app" data-open-app="backup-recovery" type="button"><img src="src/assets/icons/backup-recovery.svg" alt=""><span>Backup &amp; Recovery</span></button>
-        <button class="launchpad-app" data-open-app="security-center" type="button"><img src="src/assets/icons/security-center.svg" alt=""><span>Security Center</span></button>
+        <button class="launchpad-app" data-open-app="data-lab" type="button"><img src="src/assets/icons/apps/data-lab.svg" alt=""><span>Data Lab</span></button>
+        <button class="launchpad-app" data-open-app="experiment-lab" type="button"><img src="src/assets/icons/apps/experiment-lab.svg" alt=""><span>Experiment Lab</span></button>
+        <button class="launchpad-app" data-open-app="reports" type="button"><img src="src/assets/icons/apps/reports.svg" alt=""><span>Reports</span></button>
+        <button class="launchpad-app" data-open-app="backup-recovery" type="button"><img src="src/assets/icons/apps/backup-recovery.svg" alt=""><span>Backup &amp; Recovery</span></button>
+        <button class="launchpad-app" data-open-app="security-center" type="button"><img src="src/assets/icons/apps/security-center.svg" alt=""><span>Security Center</span></button>
       </div>
     </section>
 
@@ -447,6 +483,9 @@
           <img src="src/assets/icons/apps/launchpad.svg" alt="">
         </button>
         <span class="dock-separator"></span>
+        <button class="dock-app" data-open-app="dashboard" type="button" title="Dashboard" aria-label="Dashboard">
+          <img src="src/assets/icons/apps/dashboard.svg" alt="">
+        </button>
         <button class="dock-app" data-open-app="warden" type="button" title="Warden AI" aria-label="Warden AI">
           <img src="src/assets/icons/apps/warden.svg" alt="">
         </button>
