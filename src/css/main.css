@@ -22,9 +22,12 @@
 
   --accent: #8b9cff;
   --accent-strong: #6f84ff;
+  --accent-ink: #14162a;
   --success: #65d6a0;
   --warning: #f3c875;
   --danger: #ff777f;
+
+  --font-mono: "SF Mono", "Fira Code", "JetBrains Mono", ui-monospace, monospace;
 
   --bar-height: 44px;
   --dock-height: 72px;
